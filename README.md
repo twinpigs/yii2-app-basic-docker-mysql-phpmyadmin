@@ -2,7 +2,8 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
+    <h1 align="center">Yii 2 Basic Project Template with Docker preconfigured to run MySql and phpMyAdmin</h1>
+    <h2 align="center">Application development ready environment</h2>
     <br>
 </p>
 
