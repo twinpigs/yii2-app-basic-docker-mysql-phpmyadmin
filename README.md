@@ -43,45 +43,6 @@ The minimum requirement by this project template that your Web server supports P
 INSTALLATION
 ------------
 
-### Install via Composer
-
-If you do not have [Composer](https://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](https://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](https://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
 ### Install with Docker
 
 Update your vendor packages
@@ -95,10 +56,23 @@ Run the installation triggers (creating cookie validation code)
 Start the container
 
     docker-compose up -d
+
+#### Under Linux additionally:
+Yii2 requires permissions to write to some folders. 
+Assuming that we are making a quick installation for development needs without strict security requirements, we use the simplest way to grant these permissions:
+
+```bash
+chmod -R 777 web/assets
+chmod -R 777 runtime
+```
     
 You can then access the application through the following URL:
 
     http://127.0.0.1:8000
+
+You can access phpMyAdmin via:
+
+    http://127.0.0.1:8888
 
 **NOTES:** 
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
@@ -110,14 +84,14 @@ CONFIGURATION
 
 ### Database
 
-Edit the file `config/db.php` with real data, for example:
+Edit the file `config/db.php` with data accordingly `docker-compose.yml`, for example:
 
 ```php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
+    'dsn' => 'mysql:host=db;dbname=yii2basic',
+    'username' => 'user',
+    'password' => 'password',
     'charset' => 'utf8',
 ];
 ```
